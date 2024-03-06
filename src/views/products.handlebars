@@ -1,6 +1,14 @@
 <h1>Productos</h1>
+<div class="container-profile">
+    <h4>Bienvenido!!</h4>
+<p>Usuario: {{user.first_name}} {{user.last_name}}</p>
+<p>Email: {{user.email}}</p>
+<p>Edad: {{user.age}}</p>
+<button><a href="/api/session/logout">Logout</a></button>
 
-    {{>profile}}
+</div>
+
+
 <ul>
     <div class="card-container" >
   {{#each products}}

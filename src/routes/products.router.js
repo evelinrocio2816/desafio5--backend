@@ -9,7 +9,7 @@ const productManager =new ProductManager()
 //Router
 router.get("/", async (req, res) => {
   try {
-      const { limit = 5, page = 3, sort, query } = req.query;
+      const { limit , page , sort, query } = req.query;
 
       const products = await productManager.getProducts({
           limit: parseInt(limit),

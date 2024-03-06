@@ -57,7 +57,7 @@ router.get("/chat", async (req, res) => {
 
 router.get("/products", async (req, res) => {
    try {
-      const { page = 3, limit = 5 } = req.query;
+      const { page , limit=5 } = req.query;
       const products = await productManager.getProducts({
          page: parseInt(page),
          limit: parseInt(limit)
@@ -120,26 +120,6 @@ router.get("/profile", async(req,res)=>{
    res.render("profile", { user: req.session.user });
 
 })
-//////////////////////////////ruta de roles/////////////////////////////////////////
-//router.get("/admin", (req, res) => {
-//   if (req.session && req.session.login && req.session.user.role === 'admin') {
-//       // Usuario autenticado y con rol de administrador
-//       res.render('admin_dashboard');
-//   } else {
-//       // Usuario no autorizado
-//       res.status(403).send('Acceso denegado');
-//   }
-//});
-//
-//router.get("/user", (req, res) => {
-//   if (req.session && req.session.login && req.session.user.role === 'usuario') {
-//       // Usuario autenticado y con rol de usuario normal
-//       res.render('user_dashboard');
-//   } else {
-//       // Usuario no autorizado
-//       res.status(403).send('Acceso denegado');
-//   }
-//});
-//
+
 
  module.exports = router;

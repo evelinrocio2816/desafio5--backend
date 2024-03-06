@@ -6,11 +6,13 @@ const productsRouter = require("./routes/products.router.js");
 const cartsRouter =require("./routes/carts.router.js")
 const viewRouter = require("./routes/views.router.js")
 const userRouter= require("./routes/user.router.js")
-const sessionRouter = require("./routes/session.router.js")
+const sessionRouter=require("./routes/session.router.js")
 const socket = require("socket.io");
 
 require("./db/index.db.js")
 
+const passport= require("passport")
+const initializePassport= require("./config/passport.config.js")
 
 const cookieParser=require("cookie-parser")
 
@@ -57,10 +59,15 @@ app.use(session({
 
 store: MongoStore.create({
   mongoUrl: "mongodb+srv://evelinrocio2816:Airbag2816@cluster0.sasvmwp.mongodb.net/e-commerce?retryWrites=true&w=majority",
-  ttl:100
+ // ttl:100
 })
- 
 }))
+// Passport
+
+initializePassport();
+passport.use(passport.initialize());
+passport.use(passport.session());
+
 ///////////////////////////////////////////////////////////////////////////ROUTES//////////////////////////////////////////////////////
 app.use("/api/products", productsRouter)
 app.use("/api/carts", cartsRouter)
